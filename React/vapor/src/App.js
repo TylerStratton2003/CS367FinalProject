@@ -7,7 +7,8 @@ function App() {
         <p>Vapor: Game Recommendation System</p>
         <p>
           <label for="search">Search:</label>
-          <input type="text" name="search" id="search"></input>
+          <input type="text" name="search" id="search" placeholder="Enter game name..."></input>
+          <button onclick="searchData()">Search</button>
           <label for="tag1">Tag 1:</label>
           <input type="text" name="tag1" id="tag1"></input>
           <label for="tag2">Tag 2:</label>
@@ -37,16 +38,31 @@ function App() {
   );
 }
 
-function searchResults() {
-  return (
-    <div className="results">
-    <header className="results">
-      <p>Results:</p>
-    </header>
-    </div>
-  );
+function searchData(){
+  const searchInput= document.getElementById('searchInput');
+  const searchTerm= searchInput.ariaValueMax.toLowerCase();
+
+  fetch('/api/data?search=${searchTerm}')
+  .then(response => response.json())
+  .then(data => displayData(data))
+  .catch(error => console.error('Error fetching data:', error));
 }
 
+app.get('/api/data', async (req, res) => {
+  try {
+      let query = {};
 
+      
+      if (req.query.search) {
+          const searchRegex = new RegExp(req.query.search, 'i');
+          query = { name: searchRegex }; 
+      }
+
+      const data = await Data.find(query);
+      res.json(data);
+  } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 export default App;
