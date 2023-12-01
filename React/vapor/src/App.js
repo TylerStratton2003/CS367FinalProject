@@ -38,31 +38,6 @@ function App() {
   );
 }
 
-function searchData(){
-  const searchInput= document.getElementById('searchInput');
-  const searchTerm= searchInput.ariaValueMax.toLowerCase();
 
-  fetch('/api/data?search=${searchTerm}')
-  .then(response => response.json())
-  .then(data => displayData(data))
-  .catch(error => console.error('Error fetching data:', error));
-}
-
-app.get('/api/data', async (req, res) => {
-  try {
-      let query = {};
-
-      
-      if (req.query.search) {
-          const searchRegex = new RegExp(req.query.search, 'i');
-          query = { name: searchRegex }; 
-      }
-
-      const data = await Data.find(query);
-      res.json(data);
-  } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
 
 export default App;
