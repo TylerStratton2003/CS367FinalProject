@@ -13,11 +13,11 @@ function App() {
           <label for="tag2">Tag 2:</label>
           <input type="text" name="tag2" id="tag2"></input>
           <label for="win">Windows:</label>
-          <input type="checkbox" name="win" id="win" checked></input>
+          <input type="checkbox" name="win" id="win" ></input>
           <label for="lix">Linux:</label>
-          <input type="checkbox" name="lix" id="lix" checked></input>
+          <input type="checkbox" name="lix" id="lix" ></input>
           <label for="mac">Mac:</label>
-          <input type="checkbox" name="mac" id="mac" checked></input>
+          <input type="checkbox" name="mac" id="mac" ></input>
         </p>
       </header>
       <body>
