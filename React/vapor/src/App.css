@@ -1,11 +1,26 @@
 body {
-  background-color: #141414;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+}
+
+.game-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
+  background-color: #141414; 
   color: #ffffff;
 }
 
 .game-app > .row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   overflow: auto;
-  flex-wrap: nowrap;
+  flex-wrap: wrap; 
 }
 
 .image-container{
@@ -24,13 +39,23 @@ body {
 
 .overlay {
   position: absolute;
-  background: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.8);
   width: 100%;
-  transition: 0.5 ease;
+  transition: 0.5s ease;
   opacity: 0;
   bottom: 0;
   font-size: 20px;
   padding: 20px;
   text-align: center;
 }
+
+.SearchBox, .TagCheckBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 300px;
+  margin-right: 10px;
+}
+
 

@@ -15,22 +15,22 @@ function App() {
     const[searchValue, setSearchValue] = useState('');
 
     const getGameRequest = async(searchValue) => {
-      const url='http://www/omdbapi.com/?s=${searchValue}&apikey=263d22d8';
+      const url=`http://www/omdbapi.com/?s=${searchValue}&apikey=263d22d8`;
 
-      const repsonse = await fetch(url);
+      const response = await fetch(url);
       const responseJson = await response.json();
 
       if(responseJson.Search){
         setGames(responseJson.Search);
       }
-    }
+    };
 
     useEffect((searchValue) =>{
       getGameRequest();
     }, [searchValue]);
 
     const addFavoriteGame = (game) => {
-      const newFavaoriteList = [...favorites, game];
+      const newFavaoriteList = [...favorite, game];
       setFavorites(newFavaoriteList);
     }
 
@@ -42,8 +42,8 @@ function App() {
     <div className='container-fluid game-app'>
       <div className='row d-flex align-items-center mt-4 mb-4'>
         <gamelistheading heading="games"/>
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
-        <TagCheckBox />
+        <SearchBox style={{ width: '300x' }}searchValue={searchValue} setSearchValue={setSearchValue}/>
+        <TagCheckBox style={{ width: '200px' }}/>
       </div>
       <div className='row'>
         <gamelist 
@@ -64,7 +64,6 @@ function App() {
       </div>
     </div>
     );
-    
 }
 
 
